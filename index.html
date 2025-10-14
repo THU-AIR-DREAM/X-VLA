@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Y11HDNJTQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-3Y11HDNJTQ');
+  </script>
   <meta charset="UTF-8">
   <title>X-VLA</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -114,8 +122,9 @@
 </div> -->
 
 <div class="row" style="margin-top: 30px; text-align: center;">
-  <div class="col-md-8 col-md-offset-2">
-    <!-- arXiv 按钮（使用你提供的 path） -->
+  <div class="col-md-10 col-md-offset-1">
+
+    <!-- arXiv 按钮 -->
     <a href="https://arxiv.org/pdf/2510.10274" target="_blank"
        style="display: inline-flex; align-items: center; margin: 0 10px;
               padding: 10px 25px; background-color: #B31B1B; color: white;
@@ -128,7 +137,7 @@
       arXiv
     </a>
 
-    <!-- GitHub 按钮（Octocat） -->
+    <!-- GitHub 按钮 -->
     <a href="https://github.com/2toinf/X-VLA" target="_blank"
        style="display: inline-flex; align-items: center; margin: 0 10px;
               padding: 10px 25px; background-color: #24292E; color: white;
@@ -148,16 +157,45 @@
         0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8
         c0-4.42-3.58-8-8-8z"/>
       </svg>
-      Code
+      Code (coming soon)
     </a>
+
+    <!-- Model 按钮（Hugging Face 官方图标） -->
+    <a href="" target="_blank"
+      style="display: inline-flex; align-items: center; margin: 0 10px;
+              padding: 10px 25px; background-color: #FFAE33; color: black;
+              text-decoration: none; border-radius: 25px; font-size: 18px;
+              font-weight: 500; transition: all 0.2s ease;">
+      <img src="https://huggingface.co/spaces/huggingface/open-source-ai-year-in-review-2024/resolve/main/logos/huggingface_logo-noborder.svg"
+          alt="Hugging Face" width="22" height="22" style="margin-right:10px;">
+      Model (coming soon)
+    </a>
+
+    <!-- Dataset 按钮（Hugging Face 官方图标） -->
+    <a href="" target="_blank"
+      style="display: inline-flex; align-items: center; margin: 0 10px;
+              padding: 10px 25px; background-color: #3C8CFF; color: white;
+              text-decoration: none; border-radius: 25px; font-size: 18px;
+              font-weight: 500; transition: all 0.2s ease;">
+      <img src="https://huggingface.co/spaces/huggingface/open-source-ai-year-in-review-2024/resolve/main/logos/huggingface_logo-noborder.svg"
+          alt="Hugging Face" width="22" height="22" style="margin-right:10px;">
+      Dataset (coming soon)
+    </a>
+
+
   </div>
 </div>
+
 <br>
 
 <style>
-  /* 轻微悬停动效 */
-  a:hover { opacity: 0.85; transform: translateY(-2px); }
+  /* 悬停动效 */
+  a:hover {
+    opacity: 0.85;
+    transform: translateY(-2px);
+  }
 </style>
+
 
 
 
