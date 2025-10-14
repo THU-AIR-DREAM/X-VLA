@@ -2,10 +2,380 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Test Page</title>
+  <title>X-VLA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  <!-- Local CSS -->
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <link rel="stylesheet" href="stylesheet.css">
+  <link rel="stylesheet" href="app.css?v=20241024">
+
+  <!-- Code highlight -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+
+  <!-- MathJax -->
+  <script id="MathJax-script" async 
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+
+  <style>
+    body { padding-top: 30px; }
+    .text-title { font-weight: bold; margin-top: 20px; }
+    .top20 { margin-top: 20px; }
+    .bottom10 { margin-bottom: 10px; }
+    .codebox-pre { background: #f8f8f8; padding: 10px; }
+  </style>
 </head>
+
+
 <body>
-  <h1>Hello, World!</h1>
-  <p>This is a minimal HTML test page.</p>
+<div class="container">
+
+  <!-- Title -->
+  <div class="row text-center">
+    <h1 class="text-title" ><span class="text-highlight">X-VLA</span>:
+         Soft-Prompted Transformer as Scalable Cross-Embodiment Vision-Language-Action Model</h1>
+  </div>
+
+  <!-- Authors -->
+  <div class="row publication-authors text-center ins_text col-md-8 col-md-offset-2">
+    <ul class="list-inline authors">
+      <li>
+        <a href="https://scholar.google.com/citations?user=3j5AHFsAAAAJ&hl=zh-CN">Jingliang Zheng</a><sup>1,2*</sup>
+      </li>
+      <li>
+        <a href="https://facebear-ljx.github.io/">Jianxiong Li</a><sup>1*</sup>
+      </li>
+      <li>
+        <a href="https://zh1hao.wang/">Zhihao Wang</a><sup>1,3</sup>
+      </li>
+      <li>
+        <a href="https://openreview.net/profile?id=~Dongxiu_Liu2">Dongxiu Liu</a><sup>1</sup>
+      </li>
+      <br>
+      <li>
+        <a href="https://scholar.google.com/citations?user=X9qKxrQAAAAJ&hl=zh-CN">Xirui Kang</a><sup>1</sup>
+      </li>
+      <li>
+        <a href="https://github.com/CathyF9600">Yuchun Feng</a><sup>1</sup>
+      </li>
+      <li>
+        <a href="https://zhengyinan-air.github.io/">Yinan Zheng</a><sup>1</sup>
+      </li>
+      <li>
+        <a href="https://openreview.net/profile?id=~Jiayin_Zou1">Jiayin Zou</a><sup>1</sup>
+      </li>
+      <br>
+      <li>
+        <a href="https://yilunchen.com/about/">Yilun Chen</a><sup>2</sup>
+      </li>
+      <li>
+        <a href="https://zeng-jia.github.io/">Jia Zeng</a><sup>2</sup>
+      </li>
+      <li>
+        <a href="https://tai-wang.github.io/">Tai Wang</a><sup>2</sup>
+      </li>
+      <li>
+        <a href="https://air.tsinghua.edu.cn/en/info/1046/1188.htm">Ya-Qin Zhang</a><sup>1</sup>
+      </li>
+      <li>
+        <a href="https://air.tsinghua.edu.cn/en/info/1046/1194.htm">Jingjing Liu</a><sup>1</sup>
+      </li>
+      <li>
+        <a href="https://zhanxianyuan.xyz/">Xianyuan Zhan</a><sup>1,2</sup>
+      </li>
+    </ul>
+  </div>
+
+
+  <div class="row publication-authors text-center ins_text col-md-8 col-md-offset-2">
+    <span class="author-block"><sup>1</sup>Institute for AI Industry Research (AIR), Tsinghua University</span>
+    <span class="author-block"><sup>2</sup>Shanghai Artificial Intelligence Laboratory</span>
+    <span class="author-block"><sup>3</sup>Peking University</span>
+  </div>
+
+<!-- <div class="row top500">
+  <div class="col-md-8 col-md-offset-2" style="display: flex; justify-content: center; align-items: center; gap: 20px;">
+    <img src="sources/air.jpg" alt="Intro figure" class="center-img" style="width: 150px;">
+    <img src="sources/ailab.jpg" alt="Intro figure" class="center-img" style="width: 150px;">
+    <img src="sources/pku.png" alt="Intro figure" class="center-img" style="width: 150px;">
+  </div>
+</div> -->
+
+
+  <!-- Teaser Video -->
+
+<div class="row top300">
+  <div class="col-md-8 col-md-offset-2" style="position: relative;">
+    <video id="mainVideo" autoplay loop muted playsinline style="border-radius: 12px;">
+      <source src="sources/demo.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <!-- 英文提示 -->
+    <div id="soundHint" style="
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-size: 38px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+    ">
+      🔊 Tap to unmute
+    </div>
+  </div>
+</div>
+
+<script>
+  const video = document.getElementById('mainVideo');
+  const hint = document.getElementById('soundHint');
+
+  // 点击提示或视频区域时恢复声音
+  const enableSound = () => {
+    video.muted = false;
+    video.play();
+    hint.style.opacity = 0;
+    setTimeout(() => hint.style.display = 'none', 300);
+    document.body.removeEventListener('click', enableSound);
+  };
+
+  hint.addEventListener('click', enableSound);
+</script>
+
+
+
+
+
+  <div  id="pageTitle"> </div>
+  <!-- Overview -->
+  <div class="row top20 text-body">
+    <h1>Overview</h1>
+
+    Successful generalist Vision-Language-Action (VLA) models rely on effective training across diverse robotic platforms with large-scale, cross-embodiment, heterogeneous datasets. 
+    To facilitate and leverage the heterogeneity in rich, diverse robotic data sources, we propose a novel <span class="text-blue-bold">Soft Prompt</span> approach with minimally added parameters, 
+    by infusing prompt learning concepts into cross-embodiment robot learning and introducing separate sets of learnable embeddings for each distinct data source. 
+    These embeddings serve as embodiment-specific prompts, which in unity empower VLA models with effective exploitation of varying cross-embodiment features. 
+    Our new <span class="text-blue-bold">X-VLA</span>, a neat flow-matching-based VLA architecture, relies exclusively on soft-prompted standard Transformer encoders, enjoying both scalability and simplicity. 
+    Evaluated across 6 simulation environments as well as 3 real-world robots, our 0.9B instantiation-X-VLA-0.9B simultaneously achieves 
+    state-of-the-art performance <span class="text-blue-bold">over a sweep of benchmark suites</span> , demonstrating superior results on a wide axes of capabilities,
+    from flexible dexterity to quick adaptation across embodiments, environments, and tasks.
+  </div>
+
+  <div class="row top50 text-center">
+  <div class="col-md-8 col-md-offset-2">
+    <figure class="figure-box">
+      <img src="sources/intro.svg" alt="Intro figure" class="center-img">
+      <figcaption>
+        Outline of the X-VLA model.
+      </figcaption>
+    </figure>
+  </div>
+  </div>
+
+
+  <!-- Model Architecture -->
+  <div class="row">
+    <h1>Model Architecture</h1>
+
+  Our design introduces a streamlined encoding pipeline that integrates soft prompts and explicitly disentangles
+  high- and low-dimensional input streams. This architecture yields improved training stability and
+  consistently stronger validation performance.
+  </div>
+
+  <div class="row top50 text-center">
+  <div class="col-md-8 col-md-offset-2">
+    <figure class="figure-box">
+      <img src="sources/archi.svg" alt="Intro figure" class="center-img">
+      <figcaption>
+        Detailed architecture of our X-VLA model.
+      </figcaption>
+    </figure>
+  </div>
+  </div>
+
+  <!-- Experimental Results -->
+  <div class="row">
+    <h1>Experimental Results</h1>
+
+  <div class="scroll-container">
+  <div class="scroll-content" id="scrollContent">
+    <img src="sources/all_bench_setup.svg" class="scroll-img">
+    <img src="sources/all_bench_setup.svg" class="scroll-img">
+  </div>
+
+  Our design introduces a streamlined encoding pipeline that integrates soft prompts and explicitly disentangles high- and low-dimensional input streams. This architecture yields improved training stability and consistently stronger validation performance.
+  </div>
+
+  <div class="row top10 text-center">
+  <div class="col-md-8 col-md-offset-2">
+    <figure class="table-box">
+      <figcaption>
+        Comparison of specialize and generalize models on simulation benchmarks.
+      </figcaption>
+      <img src="sources/bench.svg" alt="Intro figure" class="center-table">
+    </figure>
+  </div>
+  </div>
+
+We also evaluate X-VLA-0.9B on physical robotic platforms follow the BridgeData-v2 benchmark. Our <span class="text-blue-bold">X-VLA</span> surpass other baselines across all five tasks, each for testing distinct axis of capability, demonstrating the superior adaptability of our <span class="text-blue-bold">X-VLA</span>.
+
+  <div class="row top20 text-center">
+  <div class="col-md-8 col-md-offset-2">
+    <figure class="figure-box">
+      <img src="sources/real_exp.svg" alt="Intro figure" class="center-img">
+      <figcaption class="top-50">
+        We evaluate our X-VLA model on three distinct real-world embodiments, each under specific task setups, including simple manipulation, dexterous manipulation, and fast adaptation experiments using Parameter efficient finetuning (PEFT) techniques.
+      </figcaption>
+    </figure>
+  </div>
+  </div>
+  </div>
+
+
+  <!-- Algorithm -->
+  <div class="row top20">
+    <h1>Soft-Fold: the <span class="text-blue-bold">First Open-Source</span> High-Quality <span class="text-blue-bold">Cloth-Folding</span> Dataset</h1>
+    <div class="row top-20 text-center">
+    <div class="col-md-8 col-md-offset-2">
+      <figure class="figure-box">
+        <img src="sources/soft_fold.svg" alt="Intro figure" class="center-img scale-1-1">
+        <figcaption class="top-50">
+          We provide qualitative results about our finetuned dexterous manipulation model from the pretrained X-VLA-0.9B and introduce a high-quality cloth folding dataset: Soft-FOLD
+        </figcaption>
+      </figure>
+    </div>
+    </div>
+
+    <a data-toggle="collapse" href="#soft_fold" style="font-size:20px;">Click to see How we collect high-quality cloth-folding data</a>
+    <div class="collapse" id="soft_fold">
+    <ol>
+      <li><b>Demonstration collecting strategy</b>. Humans can fold clothes casually and quickly, often using a wide variety of methods in a seemingly random manner. However, this variability poses significant challenges for robotic policy learning, since different folding strategies often correspond to distinct behavioral modes, and not all strategies are equally suitable for training. To reduce the inconsistency in human demonstrations, we decompose the folding task into two stages: (1) smoothing out the cloth from a highly disordered state, and (2) folding the smoothed cloth neatly. We find that the first stage is particularly challenging, as the disordered cloth exhibits highly random dynamics, requiring the policy to capture a universal strategy for unfolding. To address this, we collect demonstrations for stage I in a repetitive manner until meaningful keypoints, such as the two corners or two ends of the cloth emerge clearly. At that point, we employ swinging motions to complete the smoothing stage and then transition to stage II. This is critical for cloth folding, as unstructured or randomly collected demonstrations in stage I can entangle policies in inconsistent behaviors, leading to unstable learning dynamics and hindering progression to stage II. For stage II, the data collection becomes far more easier, as the cloth behaves less randomly after smooth-out. On average, one full folding episode takes about 1.5 minutes, with one hour of collection yielding 20–25 episodes, including time for resetting and discarding failed attempts.</li>
+      <li><b>DAgger-style data collection</b>. To train long-horizon dexterous tasks such as cloth folding with limited episodes, we find it essential to adopt a DAgger-style data collection strategy, a practice also noted by. Concretely, we train ACT after every 100 collected episodes, identify its failure modes, and then collect targeted demonstrations to address these failures. This iterative refinement enables us to achieve cloth-folding performance comparable to that of closed-source models that are likely trained on substantially larger datasets, using only 1,200 episodes.</li>
+      <li><b>Qualitative results of <i>X-VLA-0.9B</i>.</b> Here, we visualize a complete folding progress of our <i>X-VLA-0.9B</i> in Fig.5. One complete folding covers diverse skills, such as the simple <tt>Localization</tt>, <tt>Pick</tt>, <tt>Place</tt> and high-dynamical <tt>Swing</tt> motion, demonstrating the challenging of the cloth-folding tasks.</li>
+
+    </ol>
+    
+    </div>
+  </div>
+
+  <!-- Experiments -->
+  <div class="row top20">
+    <h1>Meticulous Model Design and Training Recipes</h1>
+    Building on <b>Soft Prompts</b>, 
+we introduce <span class="text-blue-bold">X-VLA</span>, a neat VLA architecture designed for stable pretraining on heterogeneous datasets and efficient adaptation on new domains. In this section, we first present the overall architectural design, followed by several key techniques for large-scale pretraining.
+See our paper for more details.  
+<div class="row top10 text-center">
+  <div class="col-md-8 col-md-offset-2">
+    <figure class="table-box">
+      <figcaption>
+      We evaluate the pretraining (PT) validation error and adaptation (AD) success rates on Simpler-WidowX benchmark. <span style="color:green;">Green</span>, <span style="color:red;">Red</span> and <span style="color:gray;">Gray</span> denote positive, negative, moderate effects, respectively. <strong>Bold</strong> scores are SOTA results. We can see that naively training on heterogeneous data leads to degradation. Also, as validation error decreases during pretraining, the adaptation success rate increases progressively, demonstrating a strong correlation between the two. Therefore, we use the validation error as a proxy for pretraining performance throughout this paper. It is evident that each components in Section 4 contributes to positive improvements for pretraining.
+      </figcaption>
+      <img src="sources/recipe.svg" alt="Intro figure" class="center-table scale-2-2">
+    </figure>
+  </div>
+  </div>
+
+  </div>
+
+  <!-- Citation -->
+  <div class="row top20">
+    <h1>Citation</h1>
+    <pre class="codebox-pre"><code class="nohighlight">
+    @misc{zheng2025xvlasoftpromptedtransformerscalable,
+          title={X-VLA: Soft-Prompted Transformer as Scalable Cross-Embodiment Vision-Language-Action Model}, 
+          author={Jinliang Zheng and Jianxiong Li and Zhihao Wang and Dongxiu Liu and Xirui Kang and Yuchun Feng and Yinan Zheng and Jiayin Zou and Yilun Chen and Jia Zeng and Ya-Qin Zhang and Jiangmiao Pang and Jingjing Liu and Tai Wang and Xianyuan Zhan},
+          year={2025},
+          eprint={2510.10274},
+          archivePrefix={arXiv},
+          primaryClass={cs.RO},
+          url={https://arxiv.org/abs/2510.10274}, 
+    }
+    </code></pre>
+  </div>  
+
+  <!-- Citation -->
+  <div class="row top20">
+    <h1>Acknowledgements</h1>
+    
+    This work was supported by funding from the National Key R&D Program of China (2022ZD0160201), 
+    Shanghai Artificial Intelligence Laboratory, Wuxi Research Institute of Applied Technologies, Tsinghua University (Grant No. 20242001120), Beijing Academy of Artificial Intelligence (BAAI), 
+    Horizon Robotics, and AsiaInfo. We thank Wencong Zhang for the help on robot maintenance, 
+    Yiming Meng for the help on surveying simulation benchmarks, and Yiming Chen for the help on real-world data 
+    collection. The design of this website was inspired by the <a href="https://seohong.me/projects/fql/" target="_blank">Flow Q-Learning</a> project page.
+  </div>  
+
+</div>
+
+
+
+<!-- External JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+  <script>
+
+document.addEventListener("DOMContentLoaded", function () {
+  const video = document.getElementById("mainVideo");
+  const title = document.getElementById("pageTitle"); // 确保此元素存在
+
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|Windows Phone/i.test(navigator.userAgent);
+  if (isMobile) return;
+
+  // 监听视频：完全不可见 → 瞬间变为小窗
+  const videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      // 当视频完全离开视口，并且当前不是小窗状态时
+      if (entry.intersectionRatio === 0 && !video.classList.contains('floating')) {
+        // 创建并插入占位符，防止页面布局跳动
+        const rect = video.getBoundingClientRect();
+        const placeholder = document.createElement("div");
+        placeholder.className = "video-placeholder";
+        placeholder.style.height = `${rect.height}px`;
+        video.parentNode.insertBefore(placeholder, video);
+
+        // 直接添加 .floating 类，完成瞬间切换
+        video.classList.add('floating');
+      }
+    });
+  }, { threshold: [0] });
+
+  videoObserver.observe(video);
+
+  // 监听标题：重新进入视口 → 瞬间恢复大窗
+  const titleObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      // 当标题进入视口，并且当前是小窗状态时
+      if (entry.isIntersecting) {
+        // 移除 .floating 类，视频会瞬间恢复原位
+        video.classList.remove('floating');
+        
+        // 移除占位符
+        const placeholder = document.querySelector(".video-placeholder");
+        if (placeholder) {
+          placeholder.remove();
+        }
+      }
+    });
+  }, { threshold: [0] });
+
+  if (title) {
+      titleObserver.observe(title);
+  }
+});
+
+  </script>
+
+
 </body>
 </html>

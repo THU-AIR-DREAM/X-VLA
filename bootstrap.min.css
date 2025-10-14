@@ -1,0 +1,409 @@
+.list-inline {
+  list-style: none;
+  margin-left: -0.5em;
+  margin-right: -0.5em;
+  padding-left: 0;
+}
+
+.list-inline > li {
+  display: inline-block;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+}
+
+b {
+  font-weight: 700;
+}
+
+h1 {
+  font-weight: 400;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  font-size: 38px;
+}
+
+h2 {
+  font-weight: 300;
+  margin-top: 30px;
+}
+
+h3 {
+  font-weight: 400;
+  font-size: 24px;
+}
+
+h4 {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+ul.authors li a {
+  color: #2d57a5 !important;   /* 黑色 */
+  text-decoration: none;    /* 去掉下划线 */
+}
+
+ul.authors li a:hover {
+  color: rgb(102, 8, 116) !important; /* 悬停时蓝色 */
+  text-decoration: underline;
+}
+
+/* ul.authors li a:hover {
+  color: #94070a !important;
+  text-decoration: underline;
+} */
+
+.author_text {
+  font-size: 21px;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+.ins_text {
+  font-size: 21px;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+.block-statement {
+  display: table;
+  font-weight: 700;
+  border: 2px solid #598be7;
+  background-color: #dee8fa;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px auto;
+}
+
+.codebox-pre {
+  font-size: 17px;
+  border: none;
+  background-color: #f6f8fa !important;
+}
+
+.codebox-code {
+  font-family: 'Source Code Pro', 'Lato', Verdana, Helvetica, monospace !important;
+  background-color: #f6f8fa !important;
+}
+
+.text-small {
+  font-size: 17px;
+}
+
+.text-large {
+  font-size: 24px;
+}
+
+.text-body {
+  text-align: justify;
+}
+
+.text-title {
+  font-size: 36px;
+  font-weight: 233;
+}
+
+.text-blue {
+  color: #2d57a5;
+}
+
+.text-blue-bold {
+  color: #2d57a5;
+  font-weight: bold;
+}
+
+.text-highlight {
+  font-size: 64px;
+  font-weight: 1000;
+  color: #2d57a5;
+}
+
+body {
+  counter-reset: fig; /* 初始化 figure 计数 */
+}
+
+.figure-box {
+  text-align: center;
+  margin: 30px auto;
+}
+
+.center-img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;           /* 图片不会超出容器 */
+  height: auto;
+  transform: scale(1.4);     /* 放大 1.2 倍 */
+  transform-origin: center;  /* 以中心为缩放点 */
+  margin-bottom: 80px;        /* 图和图例之间留空 */
+}
+
+.center-table {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;           /* 图片不会超出容器 */
+  height: auto;
+  transform: scale(1.4);     /* 放大 1.2 倍 */
+  transform-origin: center;  /* 以中心为缩放点 */
+  margin-top: 90px;
+  margin-bottom: 80px;        /* 图和图例之间留空 */
+}
+
+.figure-box figcaption {
+  font-size: 0.9em;        /* 小一号 */
+  color: #666;             /* 灰色 */
+  font-style: italic;      /* 斜体 */
+  text-align: center;      /* 居中 */
+  line-height: 1.4;        /* 让多行文字更易读 */
+}
+
+.figure-box figcaption::before {
+  counter-increment: fig;
+  content: "Figure " counter(fig) ": ";
+  font-weight: bold;
+  font-style: normal;
+}
+
+.table-box figcaption {
+  font-size: 0.9em;        /* 小一号 */
+  color: #666;             /* 灰色 */
+  font-style: italic;      /* 斜体 */
+  text-align: center;      /* 居中 */
+  line-height: 1.4;        /* 让多行文字更易读 */
+  margin-top: 5px;
+}
+
+.table-box figcaption::before {
+  counter-increment: fig;
+  content: "Table " counter(fig) ": ";
+  font-weight: bold;
+  font-style: normal;
+}
+
+.scroll-container {
+  width: 100%;           /* 容器宽度 */
+  overflow: hidden;      /* 超出部分隐藏 */
+  position: relative;
+}
+
+.scroll-content {
+  display: flex;
+  animation: scroll-left 15s linear infinite; /* 控制滚动速度 */
+  margin-bottom: -10px;
+  margin-top: -20px;
+}
+
+.scroll-container:hover .scroll-content {
+  animation-play-state: paused;
+}
+
+.scroll-img {
+  width: 100%;  /* 你可以调整图片宽度 */
+  height: 200px;   /* 你可以调整图片高度 */
+  flex-shrink: 0;  /* 禁止缩小 */
+}
+
+@keyframes scroll-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); } /* 移动半程 = 1 张图的宽度 */
+}
+
+.codebox-pre {
+  font-family: monospace;
+  margin: 0;
+  padding: 10px;
+  background: #f8f8f8;
+
+  white-space: pre-wrap;  /* 保留换行 + 自动换行 */
+  word-break: break-word; /* 避免单词撑破 */
+
+  padding-left: 2em;      /* 整体往右 */
+  text-indent: -2em;      /* 首行往左“拉回去” */
+}
+
+/* 大窗状态 */
+#mainVideo {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* 小窗最终状态 (直接应用，无过渡) */
+#mainVideo.floating {
+  position: fixed;
+  width: 200px; /* 注意：原代码中小窗目标宽度是600px，这里根据大多数小窗场景改回300px，你可以按需调整 */
+  height: auto;
+  bottom: 20px;
+  left: 20px;
+  border-radius: 36px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+  /* 确保z-index足够高，以免被其他元素遮挡 */
+  z-index: 9999;
+}
+
+/* 占位符的样式 */
+.video-placeholder {
+  flex-shrink: 0;
+}
+.publication-authors {
+    font-family: 'Google Sans', sans-serif;
+}
+.publication-authors a {
+   color: hsl(204, 86%, 53%) !important;
+}
+
+.publication-authors a:hover {
+    text-decoration: underline;
+}
+.author-block {
+  display: inline-block;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
+.institutions sup {
+  font-size: 0.6em;      /* 比默认大一些 (默认大概是0.6em左右) */
+  vertical-align: super; /* 保持上标位置 */
+  margin-left: 2px;
+}
+
+.institutions li {
+  margin: 0 100px;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+
+
+.btn-arxiv {
+  background-color: #2d57a5; /* Arxiv 红 */
+  color: white;
+  /* opacity: 0.6; */
+}
+.btn-github {
+  background-color: #2d57a5; /* GitHub 黑 */
+  color: white;
+  /* opacity: 0.6; */
+}
+.btn-arxiv:hover, .btn-github:hover {
+  opacity: 0.7;
+  color: white;
+}
+
+.text-toplink {
+  font-weight: 400;
+}
+
+.text-caption-small {
+  display: block;
+}
+
+.text-caption {
+  font-size: 20px;
+  display: block;
+}
+
+.text-equation {
+  font-size: 110%;
+}
+
+.text-red {
+  color: #f54254;
+}
+
+.text-tt {
+  font-family: 'Source Code Pro', 'Lato', Verdana, Helvetica, sans-serif;
+  font-weight: 400;
+}
+
+@media screen and (min-width:992px) {
+  .vertical-align {
+    display: flex;
+    align-items: center;
+  }
+  .vertical-align-baseline {
+    display: flex;
+    align-items: baseline;
+  }
+  .mobile-only {
+    display: none;
+  }
+  .block-statement {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width:991px) {
+  .vertical-align {
+  }
+  .vertical-align-baseline {
+  }
+  .desktop-only {
+    display: none;
+  }
+  .text-equation {
+    font-size: 100%;
+  }
+}
+
+.scale-1-0 { transform: scale(1.0); }
+.scale-1-1 { transform: scale(1.1); }
+.scale-1-2 { transform: scale(1.2); }
+.scale-1-4 { transform: scale(1.4); }
+.scale-1-6 { transform: scale(1.6); }
+.scale-1-8 { transform: scale(1.8); }
+.scale-2-2 { transform: scale(2.2); }
+
+.top0 { margin-top:0px; }
+.top5 { margin-top:5px; }
+.top7 { margin-top:7px; }
+.top10 { margin-top:10px; }
+.top15 { margin-top:15px; }
+.top17 { margin-top:17px; }
+.top20 { margin-top:20px; }
+.top30 { margin-top:30px; }
+.top40 { margin-top:40px; }
+.top50 { margin-top:50px; }
+
+.top-50 { margin-top:-50px; }
+.top-20 { margin-top:-20px; }
+.top-10 { margin-top:-10px; }
+.top-5 { margin-top:-5px; }
+
+
+.bottom0 { margin-bottom:0px; }
+.bottom5 { margin-bottom:5px; }
+.bottom7 { margin-bottom:7px; }
+.bottom10 { margin-bottom:10px; }
+.bottom15 { margin-bottom:15px; }
+.bottom17 { margin-bottom:17px; }
+.bottom20 { margin-bottom:20px; }
+.bottom30 { margin-bottom:30px; }
+
+@media screen and (min-width:992px) {
+  body, td, th, tr, p, a {
+    font-family: 'Source Sans Pro', 'Lato', Verdana, Helvetica, sans-serif;
+    font-size: 18px;
+  }
+}
+@media screen and (max-width:991px) {
+  body, td, th, tr, p, a {
+    font-family: 'Source Sans Pro', 'Lato', Verdana, Helvetica, sans-serif;
+    font-size: 16px;
+  }
+
+  .text-title {
+    font-size: 44px;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+}
+
+mjx-container[display="true"] {
+  margin: 10px 0 !important
+}
